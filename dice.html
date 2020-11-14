@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dice game</title>
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+		box-sizing: border-box;
+		background-color: #575071fa;
+	}
+	
+	.container{
+		width: 70%;
+		margin:auto;
+		text-align: center;
+	}
+
+	.dice{
+		text-align: center;
+		display: inline-block;
+		margin: 50px 0;
+	}
+
+	h1{
+		font-family: 'Dancing Script', cursive;
+		font-size: 6rem;
+		text-shadow: 5px 0px white;
+		color: #caa415;
+
+	}
+
+	p{
+		font-size: 2rem;text-shadow: 2px 0px white;color:#678ca9;
+	}
+
+	button{
+		
+		background-color: #678ca9;
+		border: none;
+		    padding: 10px 37px;
+    border-radius: 5px;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    font-family: cursive;
+	}
+</style>
+</head>
+
+<body>
+	<div class="maindiv">
+		<audio id="audio" src="mouse-click.mp3"></audio>
+<div class="container">
+	<h1>Dice game</h1>
+
+	<div class="dice">
+		<p>Player1</p>
+		<img src="dice-1-hi.png" width="300" height="300" id="click1">
+	</div>
+	<div class="dice">
+		<p>Player2</p>
+		<img src="dice-3-hi.png" width="300" height="300" id="click2">
+	</div>
+	<div>
+		<button onclick="clickevent()">Click me</button>
+		
+	</div>
+</div>
+	</div>
+
+<script type="text/javascript">
+
+clickevent = () => 
+{	
+	setTimeout(function(){
+	const play1 = Math.floor(Math.random()*6 + 1);
+	const playdice1 = "dice-"+play1+"-hi.png";
+	document.getElementById('click1').setAttribute('src',playdice1);
+	const play2 = Math.floor(Math.random()*6 + 1);
+	const playdice2 = "dice-"+play2+"-hi.png";
+	document.getElementById('click2').setAttribute('src',playdice2);
+
+	if(play1 > play2)
+	{
+		document.querySelector('h1').innerHTML = "Player 1 won";
+	}
+	else if(play2 > play1)
+	{
+		document.querySelector('h1').innerHTML = "Player 2 won";
+	}
+	else
+	{
+		document.querySelector('h1').innerHTML = "Draw the Match";
+	}
+	},100);
+	custom();
+}
+
+function custom()
+{
+	var audio = document.getElementById("audio");
+    audio.play();
+}
+
+
+</script>
+</body>
+</html>
